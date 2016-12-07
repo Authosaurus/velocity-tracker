@@ -19,7 +19,37 @@ Our app is velocity tracker for github user displaying this user issues and to h
 - I can change the default option to last weeks's issues or last month's,
 - I want to be able to see a list of all the issues (streach goal).
 
+![wireframe](images/wireframe.jpg)
+
+### Endpoints
+
+- **/** - landing page,
+- **/login** - authorise user with Github, redirect to '/user',
+- **/user** - view user name and image, open vs. closed issues
+
+### Database
+
+**Table 1. Users**
+
+|name            |  type             |
+|----------------|-------------------|
+|**user_id**     |PRIMARY KEY        |   
+|**user_name**   |string             |
+|**user_img**    |string             |   
+|**token**       |string             |  
+
+**Table 2. Issues**
+
+|name            |  type             |
+|----------------|-------------------|
+|**issue_id**    |PRIMARY KEY        |   
+|**title**       |string             |
+|**created_at**  |time stamp         |   
+|**opened**      |boolean            |   
+
+
+
 # How?
- 
+
 - Authentication via Github using the OAuth module
-- 
+-
