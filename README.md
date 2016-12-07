@@ -3,7 +3,7 @@
 # What?
 Our app is velocity tracker for github user displaying this user issues and to help compare open issues with close ones.
 
-## User Story
+# User Story
 
 - As a Github user I want to track the issues I've been assigned to, so that I can monitor my progress.
 
@@ -19,6 +19,7 @@ Our app is velocity tracker for github user displaying this user issues and to h
 - I can change the default option to last weeks's issues or last month's,
 - I want to be able to see a list of all the issues (streach goal).
 
-# Why?
-
 # How?
+ 
+- Authentication via Github using the OAuth module
+- 
