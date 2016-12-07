@@ -11,7 +11,7 @@ module.exports = [
     path: '/{file*}',
     handler: {
       directory: {
-        path: '../public/'
+        path: __dirname+"/../../public/"
       }
     }
   }

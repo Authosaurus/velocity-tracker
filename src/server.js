@@ -22,16 +22,17 @@ const options = {
 server.register([inert, vision, cookieAuth], (err) =>{
   if(err) console.log("Error registering:", err);
   server.auth.strategy('base', 'cookie', options);
-  server.route(routes);
-});
 
-server.views({
-  engines: { hbs: handlebars },
-  relativeTo: __dirname,
-  path: '../views',
-  layout: 'layout',
-  layoutPath: '../views/layout',
-  partialsPath: '../views/partials',
+  server.views({
+    engines: { hbs: handlebars },
+    relativeTo: __dirname,
+    path: '../views',
+    layout: 'layout',
+    layoutPath: '../views/layout',
+    partialsPath: '../views/partials',
+  });
+
+  server.route(routes);
 });
 
 module.exports = server;
