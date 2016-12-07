@@ -1,11 +1,13 @@
 BEGIN;
 
+DROP TABLE IF EXISTS users, issues;
+
 CREATE TABLE IF NOT EXISTS users (
     id          SERIAL     PRIMARY KEY,
     username    TEXT       UNIQUE,
     name        TEXT       NOT NULL,
     email       TEXT       NOT NULL,
-    repos       TEXT       NUMBER,
+    repos       INTEGER,
     link        TEXT       NOT NULL
 );
 
