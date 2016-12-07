@@ -52,4 +52,3 @@ Our app is velocity tracker for github user displaying this user issues and to h
 # How?
 
 - Authentication via Github using the OAuth module
--
