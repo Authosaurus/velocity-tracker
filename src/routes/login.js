@@ -35,13 +35,12 @@ module.exports = [
           };
           request.get({url: get_url, headers: get_headers}, (error, response, body) => {
             let result = JSON.parse(body);
-            queries.insertUser({token: token, username: result.login}, (err) => {
-              if(err) console.log("DB save user error:", err);
-              console.log("user saved");
+            queries.insertUser({token: token, result: result}, (err) => {
+              if(err) reply("DB error:", err);
+              else reply("user saved");
             });
           });
         }
-        console.log('Error: ', error);
       });
     }
   }

@@ -1,15 +1,15 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users, issues;
 
 CREATE TABLE IF NOT EXISTS users (
-    id           SERIAL     PRIMARY KEY,
-    username     TEXT       UNIQUE,
-    name         TEXT       NOT NULL,
-    email        TEXT       NOT NULL,
-    repos        TEXT       NUMBER,
-    link         TEXT       NOT NULL,
-    access_token TEXT
+    id          SERIAL     PRIMARY KEY,
+    username    TEXT       UNIQUE,
+    name        TEXT       NOT NULL,
+    email       TEXT       NOT NULL,
+    repos       INTEGER,
+    access_token TEXT,
+    link        TEXT       NOT NULL
 );
 
 DROP TABLE IF EXISTS issues;
