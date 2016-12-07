@@ -25,5 +25,13 @@ server.register([inert, vision, cookieAuth], (err) =>{
   server.route(routes);
 });
 
+server.views({
+  engines: { hbs: handlebars },
+  relativeTo: __dirname,
+  path: '../views',
+  layout: 'layout',
+  layoutPath: '../views/layout',
+  partialsPath: '../views/partials',
+});
 
 module.exports = server;
