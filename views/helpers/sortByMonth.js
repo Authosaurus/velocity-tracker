@@ -3,7 +3,7 @@ function sortByToday(issues) {
   .filter( function(issue) {
     var created_date = new Date(issue.created_at);
     var dateNow = new Date();
-    if(dateNow - created_date < 8.64e+7) {
+    if(dateNow - created_date < 2.628e+9) {
       return issue;
     }
   })
