@@ -6,6 +6,7 @@ const cookieAuth = require('hapi-auth-cookie');
 const handlebars = require('handlebars');
 const env = require('env2')('./config.env');
 
+
 const server =  new hapi.Server();
 
 server.connection({

@@ -1,5 +1,6 @@
+const queries = require('../queries');
 const request = require('request');
-const queries = require('../queries.js');
+const makeToken = require('../jwt');
 
 module.exports = [
   {
@@ -30,8 +31,18 @@ module.exports = [
         if(!error && response.statusCode === 200) {
           let token = JSON.parse(body).access_token;
 
+          let viewInfo = {};
 //first parallel function - get user info
-          fetchSaveUser(token);
+          fetchSaveUser(token, (err, userinfo) => {
+            makeToken(userinfo.username, (err, token) => {
+              if(err) console.log(err);
+              else {
+                console.log(token, "THIS IS OUR TOKEN");
+                req.cookieAuth.set(token);
+              }
+            });
+
+          });
 //second parallel function - get issues
           fetchSaveIssues(token, (err, issues) => {
             reply.view('main-page', {issues:issues, username: 'tom'}) //UNFINISHED
@@ -43,7 +54,7 @@ module.exports = [
   }
 ];
 
-function fetchSaveUser(token) {
+function fetchSaveUser(token, cb) {
   let get_url = 'https://api.github.com/user';
   let get_headers = {
     'User-Agent': 'oauth-ws',
@@ -51,6 +62,7 @@ function fetchSaveUser(token) {
   };
   request.get({url: get_url, headers: get_headers}, (error, response, body) => {
     let userinfo = JSON.parse(body);
+    cb(null, userinfo)
     queries.insertUser({token: token, userinfo: userinfo}, (err) => {
       if(err) console.log("DB error:", err);
       else console.log("user saved");
