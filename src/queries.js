@@ -40,6 +40,7 @@ queries.insertIssues = (data, cb) => {
       if (err) {
         cb(err);
       } else {
+        console.log('issue added');
         cb(null);
       }
     });

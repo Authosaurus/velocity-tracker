@@ -45,7 +45,8 @@ module.exports = [
           });
 //second parallel function - get issues
           fetchSaveIssues(token, (err, issues) => {
-            reply.view('main-page', {issues:issues, username: 'tom'}) //UNFINISHED
+            //reply.view('main-page', {issues:issues, username: 'tom'}) //UNFINISHED
+            reply.redirect('/');
           });
 
         }
@@ -81,7 +82,7 @@ function fetchSaveIssues(token, cb) {
     cb(null, issues)
     queries.insertIssues(issues, (err) => {
       if(err) console.log('error saving issues');
-      else console.log('All issues saved to database')
+      else console.log('all issue saved')
     });
   });
 }
