@@ -3,12 +3,17 @@
 <img class="user_image" src="https://avatars.githubusercontent.com/u/15717822?v=3" alt="User image" />
 {{!-- <img class="user_image" src="{{link}}" alt="User image" /> --}}
 
-<p>Total Issues:</p>
+<p>Total Issues:{{{totalIssues issues}}}</p>
 
+<<<<<<< HEAD
 <p>Closed: 56</p>
 <p>Open: 5</p>
 {{!-- <p>Closed: {{totalClosed}}</p>
 <p>Open: {{totalOpen}}</p> --}}
+=======
+<p>Closed: {{totalClosed issues}}</p>
+<p>Open: {{totalOpen issues}}</p>
+>>>>>>> 5471bf039544a0171c1dd3725b788dbc3f5868c7
 
 <ul class="tabs">
   <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'Today')">Today</a></li>
@@ -16,9 +21,14 @@
   <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'Month')">Month</a></li>
 </ul>
 
+{{#each issues}}
+  <p>{{this.title}}
+{{/each}}
+
 <div id="today" class="tabcontent">
-  <p>Closed</p>
+  <p>Today closed</p>
   <ul class="closed_issues">
+<<<<<<< HEAD
     <li>Found a bug <time>2016-11-30T17:42:27Z</time></li>
   </ul>
   <p>Open</p>
@@ -62,41 +72,34 @@
     {{#each todayClosedIssues}}
     <li>{{this}}</li>
     {{/each}}
+=======
+    {{{sortByToday issues "closed"}}}
+>>>>>>> 5471bf039544a0171c1dd3725b788dbc3f5868c7
   </ul>
-  <p>Open</p>
+  <p>Today open</p>
   <ul class="open_issues">
-    {{#each todayOpenIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByToday issues "open"}}}
   </ul>
 </div>
 
 <div id="last_week" class="tabcontent">
-  <p>Closed</p>
+  <p>This week closed</p>
   <ul class="closed_issues">
-    {{#each lastWeekClosedIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByWeek issues "closed"}}}
   </ul>
-  <p>Open</p>
+  <p>This week open</p>
   <ul class="open_issues">
-    {{#each lastWeekOpenIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByWeek issues "open"}}}
   </ul>
 </div>
 
 <div id="month" class="tabcontent">
-  <p>Closed</p>
+  <p>This month closed</p>
   <ul class="closed_issues">
-    {{#each monthClosedIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByMonth issues "closed"}}}
   </ul>
-  <p>Open</p>
+  <p>This month open</p>
   <ul class="open_issues">
-    {{#each monthOpenIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByMonth issues "open"}}}
   </ul>
 </div> --}}
