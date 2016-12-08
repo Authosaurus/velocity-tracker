@@ -1,10 +1,14 @@
-<h2 class="welcome_user">Hello {{username}}!</h2>
-<img class="user_image" src="{{link}}" alt="User image" />
+<h2 class="welcome_user">Hello William Savage!</h2>
+{{!-- <h2 class="welcome_user">Hello {{username}}!</h2> --}}
+<img class="user_image" src="https://avatars.githubusercontent.com/u/15717822?v=3" alt="User image" />
+{{!-- <img class="user_image" src="{{link}}" alt="User image" /> --}}
 
 <p>Total Issues:</p>
 
-<p>Closed: {{totalClosed}}</p>
-<p>Open: {{totalOpen}}</p>
+<p>Closed: 56</p>
+<p>Open: 5</p>
+{{!-- <p>Closed: {{totalClosed}}</p>
+<p>Open: {{totalOpen}}</p> --}}
 
 <ul class="tabs">
   <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'Today')">Today</a></li>
@@ -13,6 +17,46 @@
 </ul>
 
 <div id="today" class="tabcontent">
+  <p>Closed</p>
+  <ul class="closed_issues">
+    <li>Found a bug <time>2016-11-30T17:42:27Z</time></li>
+  </ul>
+  <p>Open</p>
+  <ul class="open_issues">
+    <li>tralalalala <time>2016-11-30T17:42:27Z</time></li>
+  </ul>
+</div>
+
+<div id="last_week" class="tabcontent">
+  <p>Closed</p>
+  <ul class="closed_issues">
+  <li>Found a bug1 <time>2016-11-30T17:42:27Z</time></li>
+  <li>Found a bug2  <time>2016-11-30T17:42:27Z</time></li>
+  </ul>
+  <p>Open</p>
+  <ul class="open_issues">
+    <li>tralalalala111 <time>2016-11-30T17:42:27Z</time></li>
+    <li>tralalalala112 <time>2016-11-30T17:42:27Z</time></li>
+  </ul>
+</div>
+
+<div id="month" class="tabcontent">
+  <p>Closed</p>
+  <ul class="closed_issues">
+    <li>Found a bug <time>2016-11-30T17:42:27Z</time></li>
+    <li>Found a bug1 <time>2016-11-30T17:42:27Z</time></li>
+    <li>Found a bug2  <time>2016-11-30T17:42:27Z</time></li>
+  </ul>
+  <p>Open</p>
+  <ul class="open_issues">
+    <li>tralalalala111 <time>2016-11-30T17:42:27Z</time></li>
+    <li>tralalalala112 <time>2016-11-30T17:42:27Z</time></li>
+    <li>tralalalala111 <time>2016-11-30T17:42:27Z</time></li>
+    <li>tralalalala112 <time>2016-11-30T17:42:27Z</time></li>
+  </ul>
+</div>
+
+{{!-- <div id="today" class="tabcontent">
   <p>Closed</p>
   <ul class="closed_issues">
     {{#each todayClosedIssues}}
@@ -55,4 +99,4 @@
     <li>{{this}}</li>
     {{/each}}
   </ul>
-</div>
+</div> --}}

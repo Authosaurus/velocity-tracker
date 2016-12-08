@@ -43,7 +43,7 @@ module.exports = [
                 req.cookieAuth.set({token: token});
                 counter--;
                 if(counter === 0) {
-                  reply.redirect('/');
+                  reply.view('index');
                 }
               }
             });
@@ -54,7 +54,7 @@ module.exports = [
             viewInfo.issues = issues;
             counter--;
             if(counter === 0) {
-              reply.redirect('/');
+              reply.view('index');
             }
 
           });
