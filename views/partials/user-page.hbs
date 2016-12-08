@@ -1,102 +1,80 @@
-<h2 class="welcome_user">Hello William Savage!</h2>
-{{!-- <h2 class="welcome_user">Hello {{username}}!</h2> --}}
-<img class="user_image" src="https://avatars.githubusercontent.com/u/15717822?v=3" alt="User image" />
-{{!-- <img class="user_image" src="{{link}}" alt="User image" /> --}}
+<div class="container">
 
-<p>Total Issues:</p>
+  {{!-- <h2 class="welcome_user">Hello William Savage!</h2> --}}
+  <h2 class="welcome_user">Hello {{username}}!</h2>
+  {{!-- <img class="user_image" src="https://avatars.githubusercontent.com/u/15717822?v=3" alt="User image" /> --}}
+  <img class="user_image" src="{{link}}" alt="User image" />
 
-<p>Closed: 56</p>
-<p>Open: 5</p>
-{{!-- <p>Closed: {{totalClosed}}</p>
-<p>Open: {{totalOpen}}</p> --}}
+<div class="total-issues">
 
-<ul class="tabs">
-  <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'Today')">Today</a></li>
-  <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'Last Week')">Last Week</a></li>
-  <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'Month')">Month</a></li>
-</ul>
 
-<div id="today" class="tabcontent">
-  <p>Closed</p>
-  <ul class="closed_issues">
-    <li>Found a bug <time>2016-11-30T17:42:27Z</time></li>
+  <h2 class="center total_issues_count">Total Issues:</h2>
+
+  <p class="center open_close_count"><span class="issue_count">Closed: {{totalClosed}}</span><span class="issue_count">Open: {{totalOpen}}</span></p>
+  {{!-- <p>Closed: {{totalClosed}}</p>
+  <p>Open: {{totalOpen}}</p> --}}
+
+  <ul class="tabs">
+    <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'today')">Today</a></li>
+    <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'last_week')">Last Week</a></li>
+    <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'month')">Month</a></li>
   </ul>
-  <p>Open</p>
-  <ul class="open_issues">
-    <li>tralalalala <time>2016-11-30T17:42:27Z</time></li>
-  </ul>
+
+  <div id="today" class="tabcontent center">
+    <div class="closed_left">
+      <p>Closed</p>
+      <ul>
+        {{#each todayClosedIssues}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="open_right">
+      <p>Open</p>
+      <ul>
+        {{#each todayOpenIssues}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div id="last_week" class="tabcontent center">
+    <div class="closed_left">
+      <p>Closed</p>
+      <ul>
+        {{#each todayClosedIssues}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="open_right">
+      <p>Open</p>
+      <ul>
+        {{#each todayOpenIssues}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div id="month" class="tabcontent center">
+    <div class="closed_left">
+      <p>Closed</p>
+      <ul>
+        {{#each todayClosedIssues}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="open_right">
+      <p>Open</p>
+      <ul>
+        {{#each todayOpenIssues}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </div>
-
-<div id="last_week" class="tabcontent">
-  <p>Closed</p>
-  <ul class="closed_issues">
-  <li>Found a bug1 <time>2016-11-30T17:42:27Z</time></li>
-  <li>Found a bug2  <time>2016-11-30T17:42:27Z</time></li>
-  </ul>
-  <p>Open</p>
-  <ul class="open_issues">
-    <li>tralalalala111 <time>2016-11-30T17:42:27Z</time></li>
-    <li>tralalalala112 <time>2016-11-30T17:42:27Z</time></li>
-  </ul>
 </div>
-
-<div id="month" class="tabcontent">
-  <p>Closed</p>
-  <ul class="closed_issues">
-    <li>Found a bug <time>2016-11-30T17:42:27Z</time></li>
-    <li>Found a bug1 <time>2016-11-30T17:42:27Z</time></li>
-    <li>Found a bug2  <time>2016-11-30T17:42:27Z</time></li>
-  </ul>
-  <p>Open</p>
-  <ul class="open_issues">
-    <li>tralalalala111 <time>2016-11-30T17:42:27Z</time></li>
-    <li>tralalalala112 <time>2016-11-30T17:42:27Z</time></li>
-    <li>tralalalala111 <time>2016-11-30T17:42:27Z</time></li>
-    <li>tralalalala112 <time>2016-11-30T17:42:27Z</time></li>
-  </ul>
-</div>
-
-{{!-- <div id="today" class="tabcontent">
-  <p>Closed</p>
-  <ul class="closed_issues">
-    {{#each todayClosedIssues}}
-    <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  <p>Open</p>
-  <ul class="open_issues">
-    {{#each todayOpenIssues}}
-    <li>{{this}}</li>
-    {{/each}}
-  </ul>
-</div>
-
-<div id="last_week" class="tabcontent">
-  <p>Closed</p>
-  <ul class="closed_issues">
-    {{#each lastWeekClosedIssues}}
-    <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  <p>Open</p>
-  <ul class="open_issues">
-    {{#each lastWeekOpenIssues}}
-    <li>{{this}}</li>
-    {{/each}}
-  </ul>
-</div>
-
-<div id="month" class="tabcontent">
-  <p>Closed</p>
-  <ul class="closed_issues">
-    {{#each monthClosedIssues}}
-    <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  <p>Open</p>
-  <ul class="open_issues">
-    {{#each monthOpenIssues}}
-    <li>{{this}}</li>
-    {{/each}}
-  </ul>
-</div> --}}

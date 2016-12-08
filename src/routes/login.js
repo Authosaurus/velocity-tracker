@@ -43,7 +43,10 @@ module.exports = [
                 req.cookieAuth.set({token: token});
                 counter--;
                 if(counter === 0) {
-                  reply.view('index');
+                  console.log(req.auth.credentials, 'credentials');
+                  reply.view('index', {
+                      credentials: req.auth.credentials
+                  });
                 }
               }
             });
@@ -54,7 +57,10 @@ module.exports = [
             viewInfo.issues = issues;
             counter--;
             if(counter === 0) {
-              reply.view('index');
+              console.log(req.auth.credentials, 'credentials');
+              reply.view('index', {
+                credentials: req.auth.credentials
+              });
             }
 
           });
