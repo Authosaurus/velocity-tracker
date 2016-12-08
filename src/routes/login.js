@@ -33,7 +33,9 @@ module.exports = [
 //first parallel function - get user info
           fetchSaveUser(token);
 //second parallel function - get issues
-          fetchSaveIssues(token);
+          fetchSaveIssues(token, (err, issues) => {
+            reply.view('main-page', {issues:issues, username: 'tom'}) //UNFINISHED
+          });
 
         }
       });
@@ -56,7 +58,7 @@ function fetchSaveUser(token) {
   });
 }
 
-function fetchSaveIssues(token) {
+function fetchSaveIssues(token, cb) {
   let get_url = 'https://api.github.com/issues?state=all';
   let get_headers = {
     'User-Agent': 'oauth-ws',
@@ -64,9 +66,10 @@ function fetchSaveIssues(token) {
   };
   request.get({url: get_url, headers: get_headers}, (error, response, body) => {
     let issues = JSON.parse(body);
+    cb(null, issues)
     queries.insertIssues(issues, (err) => {
-      if(err) console.log("DB error:", err);
-      else console.log("issues saved");
+      if(err) console.log('error saving issues');
+      else console.log('All issues saved to database')
     });
   });
 }
