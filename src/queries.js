@@ -26,6 +26,13 @@ queries.insertUser = (data, cb) => {
 
 };
 
+queries.getAccessToken = (username, cb) => {
+  conn.query('SELECT access_token FROM users WHERE username = $1', [username], (err, result) => {
+    if(err) { return cb(err); }
+    cb(null, result.rows);
+  });
+};
+
 queries.insertIssues = (data, cb) => {
   for(var i = 0; i < data.length; i++) {
     let issue = data[i];
