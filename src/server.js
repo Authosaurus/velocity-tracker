@@ -14,16 +14,17 @@ server.connection({
     port: process.env.PORT || 3000
 });
 
-
 const options = {
   password: 'thi£siVVs&Rauthosaur=uspkassword',
   cookie: 'authosaurus-cookie',
   isSecure: process.env.NODE_ENV === 'PRODUCTION',
   ttl: 24 * 60 * 60 * 1000
-}
+};
+
 server.register([inert, vision, cookieAuth, contextCredentials], (err) =>{
   if(err) console.log("Error registering:", err);
-  server.auth.strategy('base', 'cookie', options);
+
+  server.auth.strategy('session', 'cookie', 'optional', options);
   server.views({
       engines: { hbs: handlebars },
       relativeTo: __dirname,
