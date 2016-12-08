@@ -38,7 +38,8 @@ module.exports = [
               if(err) console.log(err);
               else {
                 console.log(token, "THIS IS OUR TOKEN");
-                req.cookieAuth.set(token);
+                req.cookieAuth.set({token: token});
+                console.log("cookie set", req.cookieAuth.credentials);
               }
             });
 
@@ -46,6 +47,7 @@ module.exports = [
 //second parallel function - get issues
           fetchSaveIssues(token, (err, issues) => {
             //reply.view('main-page', {issues:issues, username: 'tom'}) //UNFINISHED
+            console.log("all issues saved")
             reply.redirect('/');
           });
 
@@ -82,7 +84,6 @@ function fetchSaveIssues(token, cb) {
     cb(null, issues)
     queries.insertIssues(issues, (err) => {
       if(err) console.log('error saving issues');
-      else console.log('all issue saved')
     });
   });
 }

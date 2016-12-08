@@ -6,7 +6,6 @@ queries.insertUser = (data, cb) => {
   conn.query('begin');
   let sql = `UPDATE users SET access_token=$1 WHERE username=$2;`
   let inputs = [data.token, data.userinfo.login];
-  console.log(inputs, "FIRST");
   conn.query(sql, inputs, (err) => {
       if(err) {
         cb(err);
@@ -15,7 +14,6 @@ queries.insertUser = (data, cb) => {
                    SELECT $2, $1, $3, $4, $5
                    WHERE NOT EXISTS (SELECT 1 FROM users WHERE username=$2);`;
       let inputs = [data.token, data.userinfo.login, data.userinfo.name, data.userinfo.email, data.userinfo.url];
-      console.log(inputs, "SECOND");
       conn.query(sql, inputs, (err) => {
         if (err) {
           cb(err);

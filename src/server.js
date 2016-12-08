@@ -21,9 +21,18 @@ const options = {
   ttl: 24 * 60 * 60 * 1000
 };
 
+
 server.register([inert, vision, cookieAuth], (err) =>{
   if(err) console.log("Error registering:", err);
   server.auth.strategy('base', 'cookie', options);
+  server.views({
+      engines: { hbs: handlebars },
+      relativeTo: __dirname,
+      path: '../views',
+      layout: 'layout',
+      layoutPath: '../views/layout',
+      partialsPath: '../views/partials',
+  });
   server.route(routes);
 });
 
