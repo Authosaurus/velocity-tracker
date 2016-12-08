@@ -1,20 +1,15 @@
 function openTab(tabEvent, period) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
+    var tabcontent = document.getElementsByClassName("tabcontent");
+    var tablinks = document.getElementsByClassName("tablink");
 
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
+    for (var i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
 
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
+    for (var i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
 
-    // Show the current tab, and add an "active" class to the link that opened the tab
     document.getElementById(period).style.display = "block";
     tabEvent.currentTarget.className += " active";
 }
