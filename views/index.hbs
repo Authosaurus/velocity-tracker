@@ -1,2 +1,6 @@
 {{> header}}
-{{> main-page}}
+{{# if credentials}}
+  {{> user-page}}
+{{else}}
+  {{> main-page}}
+{{/if}}
