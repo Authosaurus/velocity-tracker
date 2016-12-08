@@ -64,10 +64,9 @@ function fetchSaveIssues(token) {
   };
   request.get({url: get_url, headers: get_headers}, (error, response, body) => {
     let issues = JSON.parse(body);
-    console.log(issues);
-    // queries.insertIssues({token: token, issues: issues}, (err) => {
-    //   if(err) console.log("DB error:", err);
-    //   else console.log("issues saved");
-    // });
+    queries.insertIssues(issues, (err) => {
+      if(err) console.log("DB error:", err);
+      else console.log("issues saved");
+    });
   });
 }

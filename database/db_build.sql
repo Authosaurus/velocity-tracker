@@ -16,12 +16,12 @@ DROP TABLE IF EXISTS issues;
 
 CREATE TABLE IF NOT EXISTS issues (
   id          SERIAL     PRIMARY KEY,
-  url         TEXT       NOT NULL,
+  url         TEXT       UNIQUE,
   state       TEXT       NOT NULL,
   title       TEXT       NOT NULL,
   body        TEXT,
-  created     TEXT       NOT NULL,
-  closed      TEXT
+  created_at  TEXT       NOT NULL,
+  closed_at   TEXT
 );
 
 
