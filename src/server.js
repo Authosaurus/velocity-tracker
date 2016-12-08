@@ -7,6 +7,7 @@ const handlebars = require('handlebars');
 const env = require('env2')('./config.env');
 const contextCredentials = require('hapi-context-credentials');
 
+
 const server =  new hapi.Server();
 
 server.connection({
@@ -23,17 +24,17 @@ const options = {
 server.register([inert, vision, cookieAuth, contextCredentials], (err) =>{
   if(err) console.log("Error registering:", err);
   server.auth.strategy('base', 'cookie', options);
-
   server.views({
-    engines: { hbs: handlebars },
-    relativeTo: __dirname,
-    path: '../views',
-    layout: 'layout',
-    layoutPath: '../views/layout',
-    partialsPath: '../views/partials',
+      engines: { hbs: handlebars },
+      relativeTo: __dirname,
+      path: '../views',
+      layout: 'layout',
+      layoutPath: '../views/layout',
+      partialsPath: '../views/partials',
   });
-
   server.route(routes);
 });
+
+
 
 module.exports = server;
