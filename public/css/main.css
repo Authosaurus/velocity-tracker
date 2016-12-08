@@ -1,3 +1,32 @@
-body {
-  background-color: blue;
+html, body {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1rem;
+}
+
+.header_title {
+  font-family: 'Dekko', cursive;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.login_form {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.github_submit {
+  border : none;
+  background-color: white;
+}
+
+.icon_style {
+  color: black;
+  font-size: 16em;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.icon_style:hover {
+  opacity: 0.8;
 }
