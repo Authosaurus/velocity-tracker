@@ -1,5 +1,6 @@
 const request = require('request');
 const queries = require('../queries.js');
+
 module.exports = [
   {
     method: 'GET',
@@ -28,20 +29,45 @@ module.exports = [
       request.post({url: url, headers: header, form: form}, (error, response, body) => {
         if(!error && response.statusCode === 200) {
           let token = JSON.parse(body).access_token;
-          let get_url = 'https://api.github.com/user';
-          let get_headers = {
-            'User-Agent': 'oauth-ws',
-            Authorization: `token ${token}`
-          };
-          request.get({url: get_url, headers: get_headers}, (error, response, body) => {
-            let result = JSON.parse(body);
-            queries.insertUser({token: token, result: result}, (err) => {
-              if(err) reply("DB error:", err);
-              else reply("user saved");
-            });
-          });
+
+//first parallel function - get user info
+          fetchSaveUser(token);
+//second parallel function - get issues
+          fetchSaveIssues(token);
+
         }
       });
     }
   }
 ];
+
+function fetchSaveUser(token) {
+  let get_url = 'https://api.github.com/user';
+  let get_headers = {
+    'User-Agent': 'oauth-ws',
+    Authorization: `token ${token}`
+  };
+  request.get({url: get_url, headers: get_headers}, (error, response, body) => {
+    let userinfo = JSON.parse(body);
+    queries.insertUser({token: token, userinfo: userinfo}, (err) => {
+      if(err) console.log("DB error:", err);
+      else console.log("user saved");
+    });
+  });
+}
+
+function fetchSaveIssues(token) {
+  let get_url = 'https://api.github.com/issues?state=all';
+  let get_headers = {
+    'User-Agent': 'oauth-ws',
+    Authorization: `token ${token}`
+  };
+  request.get({url: get_url, headers: get_headers}, (error, response, body) => {
+    let issues = JSON.parse(body);
+    console.log(issues);
+    // queries.insertIssues({token: token, issues: issues}, (err) => {
+    //   if(err) console.log("DB error:", err);
+    //   else console.log("issues saved");
+    // });
+  });
+}
