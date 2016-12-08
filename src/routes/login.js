@@ -1,6 +1,6 @@
 const queries = require('../queries');
 const request = require('request');
-const makeToken = require('../jwt');
+const jwt = require('jsonwebtoken');
 
 module.exports = [
   {
@@ -29,17 +29,12 @@ module.exports = [
       };
       request.post({url: url, headers: header, form: form}, (error, response, body) => {
         if(!error && response.statusCode === 200) {
-          const token = JSON.parse(body).access_token;
+          const access_token = JSON.parse(body).access_token;
 
-          fetchSaveUser(token, (err, userinfo) => {
-            makeToken({username: userinfo.login}, (err, token) => {
-              if(err) console.log(err);
-              else {
-                req.cookieAuth.set({token: token});
-                reply.redirect("/issues");
-              }
-            });
-
+          fetchSaveUser(access_token, (err, userinfo) => {
+            const webToken = jwt.sign({username: userinfo.login}, process.env.JWT_SECRET);
+            req.cookieAuth.set({token: webToken});
+            reply.redirect('/issues');
           });
         }
       });
