@@ -1,6 +1,7 @@
-function sortByToday(issues) {
-  var sortedIssues = issues
+function sortByWeek(issues, state) {
+  return issues
   .filter( function(issue) {
+    if(state && issue.state !== state) { return false; }
     var created_date = new Date(issue.created_at);
     var dateNow = new Date();
     if(dateNow - created_date < 6.048e+8) {
@@ -11,9 +12,7 @@ function sortByToday(issues) {
     return `<p>${issue.title}</p><br>
             <p>${issue.created_at}</p>`;
 
-  })
-  return sortedIssues;
-};
+  });
+}
 
-
-module.exports = sortByToday;
+module.exports = sortByWeek;
