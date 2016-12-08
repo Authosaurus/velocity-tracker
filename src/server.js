@@ -5,6 +5,7 @@ const vision = require('vision');
 const cookieAuth = require('hapi-auth-cookie');
 const handlebars = require('handlebars');
 const env = require('env2')('./config.env');
+const contextCredentials = require('hapi-context-credentials');
 
 
 const server =  new hapi.Server();
@@ -19,10 +20,8 @@ const options = {
   cookie: 'authosaurus-cookie',
   isSecure: process.env.NODE_ENV === 'PRODUCTION',
   ttl: 24 * 60 * 60 * 1000
-};
-
-
-server.register([inert, vision, cookieAuth], (err) =>{
+}
+server.register([inert, vision, cookieAuth, contextCredentials], (err) =>{
   if(err) console.log("Error registering:", err);
   server.auth.strategy('base', 'cookie', options);
   server.views({
