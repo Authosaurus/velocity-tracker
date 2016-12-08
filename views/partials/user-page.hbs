@@ -16,60 +16,35 @@
   <p>{{this.title}}
 {{/each}}
 
-{{{sortByToday issues}}}
-
-{{{sortByWeek issues}}}
-
-{{{sortByMonth issues}}}
-
-<!--
-=======
-{{#each issues}}
-  <p>{{this.title}}
-{{/each}}
->>>>>>> master
 <div id="today" class="tabcontent">
-  <p>Closed</p>
+  <p>Today closed</p>
   <ul class="closed_issues">
-    {{#each todayClosedIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByToday issues "closed"}}}
   </ul>
-  <p>Open</p>
+  <p>Today open</p>
   <ul class="open_issues">
-    {{#each todayOpenIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByToday issues "open"}}}
   </ul>
 </div>
 
 <div id="last_week" class="tabcontent">
-  <p>Closed</p>
+  <p>This week closed</p>
   <ul class="closed_issues">
-    {{#each lastWeekClosedIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByWeek issues "closed"}}}
   </ul>
-  <p>Open</p>
+  <p>This week open</p>
   <ul class="open_issues">
-    {{#each lastWeekOpenIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByWeek issues "open"}}}
   </ul>
 </div>
 
 <div id="month" class="tabcontent">
-  <p>Closed</p>
+  <p>This month closed</p>
   <ul class="closed_issues">
-    {{#each monthClosedIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByMonth issues "closed"}}}
   </ul>
-  <p>Open</p>
+  <p>This month open</p>
   <ul class="open_issues">
-    {{#each monthOpenIssues}}
-    <li>{{this}}</li>
-    {{/each}}
+    {{{sortByMonth issues "open"}}}
   </ul>
 </div>
--->
