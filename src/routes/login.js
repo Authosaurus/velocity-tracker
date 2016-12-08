@@ -32,23 +32,31 @@ module.exports = [
           let token = JSON.parse(body).access_token;
 
           let viewInfo = {};
+          let counter = 2;
 //first parallel function - get user info
           fetchSaveUser(token, (err, userinfo) => {
+            viewInfo.userinfo = userinfo;
             makeToken(userinfo.username, (err, token) => {
               if(err) console.log(err);
               else {
-                console.log(token, "THIS IS OUR TOKEN");
+              //  console.log(token, "THIS IS OUR TOKEN");
                 req.cookieAuth.set({token: token});
-                console.log("cookie set", req.cookieAuth.credentials);
+                counter--;
+                if(counter === 0) {
+                  reply.redirect('/');
+                }
               }
             });
 
           });
 //second parallel function - get issues
           fetchSaveIssues(token, (err, issues) => {
-            //reply.view('main-page', {issues:issues, username: 'tom'}) //UNFINISHED
-            console.log("all issues saved")
-            reply.redirect('/');
+            viewInfo.issues = issues;
+            counter--;
+            if(counter === 0) {
+              reply.redirect('/');
+            }
+
           });
 
         }
