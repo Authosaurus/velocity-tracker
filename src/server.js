@@ -23,7 +23,7 @@ const options = {
 
 server.register([inert, vision, cookieAuth, contextCredentials], (err) =>{
   if(err) console.log("Error registering:", err);
-
+  
   server.auth.strategy('session', 'cookie', 'optional', options);
   server.views({
       engines: { hbs: handlebars },
@@ -32,6 +32,7 @@ server.register([inert, vision, cookieAuth, contextCredentials], (err) =>{
       layout: 'layout',
       layoutPath: '../views/layout',
       partialsPath: '../views/partials',
+      helpersPath: '../views/helpers'
   });
   server.route(routes);
 });

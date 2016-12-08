@@ -56,4 +56,3 @@ function fetchSaveUser(token, cb) {
     });
   });
 }
-
