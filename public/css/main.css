@@ -33,6 +33,7 @@ li {
 .github_submit {
   border : none;
   background-color: white;
+  outline: none;
 }
 
 .icon_style {
