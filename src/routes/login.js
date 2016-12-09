@@ -29,7 +29,10 @@ module.exports = [
       };
       request.post({url: url, headers: header, form: form}, (error, response, body) => {
         if(!error && response.statusCode === 200) {
+
+
           const access_token = JSON.parse(body).access_token;
+
 
           fetchSaveUser(access_token, (err, userinfo) => {
             const webToken = jwt.sign({username: userinfo.login}, process.env.JWT_SECRET);

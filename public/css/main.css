@@ -1,6 +1,21 @@
 html, body {
-    font-family: 'Quattrocento Sans', sans-serif;
-    font-size: 1rem;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 1rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+.center {
+  text-align: center;
+  padding: 20px;
+}
+
+/* header */
+.header {
+  position: relative;
+  width: 100%;
 }
 
 .header_title {
@@ -29,4 +44,110 @@ html, body {
 
 .icon_style:hover {
   opacity: 0.8;
+}
+
+.logout {
+  position: absolute;
+  right: 0;
+  width: 18%;
+  top: 20px;
+}
+
+.logout_button {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color;
+  cursor: pointer;
+}
+
+.logout_button:hover {
+  background-color: #ddd;
+}
+
+/* main */
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.welcome_user {
+  width: 45%;
+  display: inline-block;
+  margin-left: 30%;
+}
+
+.user_image {
+  width: 90px;
+  margin-right: 14%;
+  float: right;
+}
+
+.issue_count {
+  padding: 40px;
+}
+
+.total_issues {
+  margin-top: 45px;
+}
+
+.total_issues_count {
+  padding-bottom: 0;
+}
+
+.open_close_count {
+  padding-top: 0;
+}
+/* tabs */
+
+.tabs {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 24.2%;
+}
+
+.tab-item {
+  float: left;
+}
+
+.tab-item a {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 2.2em;
+}
+
+.tab-item a:hover {
+  background-color: #ddd;
+}
+
+.tab-item a:focus,
+.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.closed_left {
+  display: inline-block;
+  width: 50%;
+  float: left;
+}
+
+.open_right {
+  display: inline-block;
+  width: 50%
 }

@@ -13,7 +13,7 @@ queries.insertUser = (data, cb) => {
       let sql = `INSERT INTO users (username, access_token, name, email, link)
                    SELECT $2, $1, $3, $4, $5
                    WHERE NOT EXISTS (SELECT 1 FROM users WHERE username=$2);`;
-      let inputs = [data.token, data.userinfo.login, data.userinfo.name, data.userinfo.email, data.userinfo.url];
+      let inputs = [data.token, data.userinfo.login, data.userinfo.name, data.userinfo.email, data.userinfo.avatar_url];
       conn.query(sql, inputs, (err) => {
         if (err) {
           cb(err);
@@ -26,8 +26,8 @@ queries.insertUser = (data, cb) => {
 
 };
 
-queries.getAccessToken = (username, cb) => {
-  conn.query('SELECT access_token FROM users WHERE username = $1', [username], (err, result) => {
+queries.getUser = (username, cb) => {
+  conn.query('SELECT access_token, link FROM users WHERE username = $1', [username], (err, result) => {
     if(err) { return cb(err); }
     cb(null, result.rows);
   });
