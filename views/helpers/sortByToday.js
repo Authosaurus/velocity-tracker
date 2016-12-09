@@ -1,3 +1,5 @@
+const formatDate = require('./format-date.js');
+
 function sortByToday(issues, state) {
   if(!issues) return;
   return issues
@@ -10,10 +12,9 @@ function sortByToday(issues, state) {
     }
   })
   .map( function(issue) {
-    return `<li><p>${issue.title}</p>
-            <p>${issue.created_at}</p></li>`;
-
-  });
+    var date = formatDate(issue.created_at);
+    return `<li class="issue_item">${issue.title} <p class="issue_date">created at: ${date}</p></li>`;
+  }).join('');
 }
 
 module.exports = sortByToday;
