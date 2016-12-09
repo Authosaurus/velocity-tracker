@@ -1,80 +1,61 @@
 <div class="container">
 
-  {{!-- <h2 class="welcome_user">Hello William Savage!</h2> --}}
   <h2 class="welcome_user">Hello {{username}}!</h2>
-  {{!-- <img class="user_image" src="https://avatars.githubusercontent.com/u/15717822?v=3" alt="User image" /> --}}
   <img class="user_image" src="{{link}}" alt="User image" />
 
-<div class="total-issues">
-<p>Total Issues:{{{totalIssues issues}}}</p>
-<p>Closed: {{totalClosed issues}}</p>
-<p>Open: {{totalOpen issues}}</p>
+    <h2 class="center total_issues_count">Total Issues:</h2>
 
+    <p class="center open_close_count"><span class="issue_count">Closed: {{{totalClosed issues}}}</span><span class="issue_count">Open: {{{totalOpen issues}}}</span></p>
 
+    <ul class="tabs">
+      <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'today')">Today</a></li>
+      <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'last_week')">Last Week</a></li>
+      <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'month')">Month</a></li>
+    </ul>
 
-  <h2 class="center total_issues_count">Total Issues:</h2>
-{{!-- {{#each issues}}
-  <p>{{this.title}}
-{{/each}} --}}
-
-{{!-- <div id="today" class="tabcontent">
-  <p>Today closed</p>
-  <ul class="closed_issues"> --}}
-
-
-  <p class="center open_close_count"><span class="issue_count">Closed: {{{totalClosed issues}}}</span><span class="issue_count">Open: {{{totalOpen issues}}}</span></p>
-  {{!-- <p>Closed: {{totalClosed}}</p>
-  <p>Open: {{totalOpen}}</p> --}}
-
-  <ul class="tabs">
-    <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'today')">Today</a></li>
-    <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'last_week')">Last Week</a></li>
-    <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'month')">Month</a></li>
-  </ul>
-
-  <div id="today" class="tabcontent center">
-    <div class="closed_left">
-      <p>Closed</p>
-      <ul>
-        {{{sortByToday issues "closed"}}}
-      </ul>
+    <div id="today" class="tabcontent center">
+      <div class="closed_left">
+        <p>Closed</p>
+        <ul>
+          {{{sortByToday issues "closed"}}}
+        </ul>
+      </div>
+      <div class="open_right">
+        <p>Open</p>
+        <ul>
+          {{{sortByToday issues "open"}}}
+        </ul>
+      </div>
     </div>
-    <div class="open_right">
-      <p>Open</p>
-      <ul>
-      {{{sortByToday issues "open"}}}
-      </ul>
-    </div>
-  </div>
 
-  <div id="last_week" class="tabcontent center">
-    <div class="closed_left">
-      <p>Closed</p>
-      <ul>
-        {{{sortByWeek issues "closed"}}}
-      </ul>
+    <div id="last_week" class="tabcontent center">
+      <div class="closed_left">
+        <p>Closed</p>
+        <ul>
+          {{{sortByWeek issues "closed"}}}
+        </ul>
+      </div>
+      <div class="open_right">
+        <p>Open</p>
+        <ul>
+          {{{sortByWeek issues "open"}}}
+        </ul>
+      </div>
     </div>
-    <div class="open_right">
-      <p>Open</p>
-      <ul>
-        {{{sortByWeek issues "open"}}}
-      </ul>
-    </div>
-  </div>
 
-  <div id="month" class="tabcontent center">
-    <div class="closed_left">
-      <p>Closed</p>
-      <ul>
-        {{{sortByMonth issues "closed"}}}
-      </ul>
-    </div>
-    <div class="open_right">
-      <p>Open</p>
-      <ul>
-        {{{sortByMonth issues "open"}}}
-      </ul>
+    <div id="month" class="tabcontent center">
+      <div class="closed_left">
+        <p>Closed</p>
+        <ul>
+          {{{sortByMonth issues "closed"}}}
+        </ul>
+      </div>
+      <div class="open_right">
+        <p>Open</p>
+        <ul>
+          {{{sortByMonth issues "open"}}}
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 </div>
