@@ -10,10 +10,8 @@ function sortByWeek(issues, state) {
     }
   })
   .map( function(issue) {
-    return `<p>${issue.title}</p><br>
-            <p>${issue.created_at}</p>`;
-
-  });
+    return `<li class="issue_item">${issue.title} <p class="issue_date">created at: ${issue.created_at}</p></li>`;
+  }).join('');
 }
 
 module.exports = sortByWeek;

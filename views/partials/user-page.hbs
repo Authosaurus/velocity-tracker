@@ -5,7 +5,7 @@
 
     <h2 class="center total_issues_count">Total Issues:</h2>
 
-    <p class="center open_close_count"><span class="issue_count">Closed: {{{totalClosed issues}}}</span><span class="issue_count">Open: {{{totalOpen issues}}}</span></p>
+    <p class="center open_close_count"><span class="issue_count closed">Closed: {{{totalClosed issues}}}</span><span class="issue_count open">Open: {{{totalOpen issues}}}</span></p>
 
     <ul class="tabs">
       <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'today')">Today</a></li>
@@ -15,13 +15,13 @@
 
     <div id="today" class="tabcontent center">
       <div class="closed_left">
-        <p>Closed</p>
+        <p class="closed">Closed</p>
         <ul>
           {{{sortByToday issues "closed"}}}
         </ul>
       </div>
       <div class="open_right">
-        <p>Open</p>
+        <p class="open">Open</p>
         <ul>
           {{{sortByToday issues "open"}}}
         </ul>
@@ -30,13 +30,13 @@
 
     <div id="last_week" class="tabcontent center">
       <div class="closed_left">
-        <p>Closed</p>
+        <p class="closed">Closed</p>
         <ul>
           {{{sortByWeek issues "closed"}}}
         </ul>
       </div>
       <div class="open_right">
-        <p>Open</p>
+        <p class="open">Open</p>
         <ul>
           {{{sortByWeek issues "open"}}}
         </ul>
@@ -45,13 +45,13 @@
 
     <div id="month" class="tabcontent center">
       <div class="closed_left">
-        <p>Closed</p>
+        <p class="closed">Closed</p>
         <ul>
           {{{sortByMonth issues "closed"}}}
         </ul>
       </div>
       <div class="open_right">
-        <p>Open</p>
+        <p class="open">Open</p>
         <ul>
           {{{sortByMonth issues "open"}}}
         </ul>

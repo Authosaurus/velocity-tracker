@@ -10,10 +10,8 @@ function sortByToday(issues, state) {
     }
   })
   .map( function(issue) {
-    return `<li><p>${issue.title}</p>
-            <p>${issue.created_at}</p></li>`;
-
-  });
+    return `<li class="issue_item">${issue.title} <p class="issue_date">created at: ${issue.created_at}</p></li>`;
+  }).join('');
 }
 
 module.exports = sortByToday;
