@@ -1,4 +1,5 @@
 function sortByToday(issues, state) {
+  if(!issues) return;
   return issues
   .filter( function(issue) {
     var created_date = new Date(issue.created_at);

@@ -37,7 +37,7 @@ module.exports = [
           fetchSaveUser(access_token, (err, userinfo) => {
             const webToken = jwt.sign({username: userinfo.login}, process.env.JWT_SECRET);
             req.cookieAuth.set({token: webToken});
-            reply.redirect('/issues');
+            reply.redirect('/');
           });
         }
       });
