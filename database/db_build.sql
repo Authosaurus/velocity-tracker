@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     id          SERIAL     PRIMARY KEY,
     username    TEXT       UNIQUE,
     name        TEXT       NOT NULL,
-    email       TEXT       NOT NULL,
+    email       TEXT,
     repos       INTEGER,
     access_token TEXT,
     link        TEXT       NOT NULL
