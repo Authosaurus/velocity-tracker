@@ -8,7 +8,13 @@ const env = require('env2')('./config.env');
 const contextCredentials = require('hapi-context-credentials');
 
 
-const server =  new hapi.Server();
+const server =  new hapi.Server({
+  connections: {
+    state: {
+      isSameSite: 'Lax'
+    }
+  }
+});
 
 server.connection({
     port: process.env.PORT || 3000
