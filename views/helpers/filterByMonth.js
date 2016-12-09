@@ -1,13 +1,13 @@
 const formatDate = require('./format-date.js');
 
-function sortByWeek(issues, state) {
+function filterByMonth(issues, state) {
   if(!issues) return;
   return issues
   .filter( function(issue) {
     if(state && issue.state !== state) { return false; }
     var created_date = new Date(issue.created_at);
     var dateNow = new Date();
-    if(dateNow - created_date < 6.048e+8) {
+    if(dateNow - created_date < 2.628e+9) {
       return issue;
     }
   })
@@ -17,4 +17,4 @@ function sortByWeek(issues, state) {
   }).join('');
 }
 
-module.exports = sortByWeek;
+module.exports = filterByMonth;

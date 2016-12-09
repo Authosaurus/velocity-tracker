@@ -1,6 +1,6 @@
 const formatDate = require('./format-date.js');
 
-function sortByToday(issues, state) {
+function filterByToday(issues, state) {
   if(!issues) return;
   return issues
   .filter( function(issue) {
@@ -17,4 +17,4 @@ function sortByToday(issues, state) {
   }).join('');
 }
 
-module.exports = sortByToday;
+module.exports = filterByToday;
