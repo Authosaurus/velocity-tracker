@@ -53,9 +53,9 @@ function fetchSaveUser(token, cb) {
   };
   request.get({url: get_url, headers: get_headers}, (error, response, body) => {
     const userinfo = JSON.parse(body);
-    cb(null, userinfo);
     queries.insertUser({token: token, userinfo: userinfo}, (err) => {
       if(err) console.log("DB error:", err);
+      cb(null, userinfo);
     });
   });
 }
