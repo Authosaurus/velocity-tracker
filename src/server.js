@@ -24,9 +24,7 @@ const options = {
 server.register([inert, vision, cookieAuth, contextCredentials], (err) =>{
   if(err) console.log("Error registering:", err);
 
-
   server.auth.strategy('session', 'cookie', 'optional', options);
-
 
   server.views({
       engines: { hbs: handlebars },
@@ -40,7 +38,5 @@ server.register([inert, vision, cookieAuth, contextCredentials], (err) =>{
 
   server.route(routes);
 });
-
-
 
 module.exports = server;
