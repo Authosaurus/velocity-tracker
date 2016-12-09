@@ -15,11 +15,11 @@ module.exports = [
     path: '/issues',
     handler: (req, reply) => {
       const webToken = jwt.verify(req.auth.credentials.token, process.env.JWT_SECRET);
-      queries.getAccessToken(webToken.username, (err, rows) => {
+      queries.getUser(webToken.username, (err, rows) => {
         if(err) { return reply(err); }
         if(!rows.length) { return reply('User not found'); }
         fetchSaveIssues(rows[0].access_token, (err, issues) => {
-          reply.view('index', {issues: issues});
+          reply.view('index', {issues: issues, username: webToken.username, link: rows[0].link});
         });
       });
     }
