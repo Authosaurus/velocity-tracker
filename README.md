@@ -1,5 +1,12 @@
 # Authosaurus's velocity tracker
 
+# Setup
+
+1. Clone this repo and ```cd velocity-tracker```.
+2. Run npm install.
+3. Add config.env (ask us for details).
+4. Start server by running ```npm run devStart```.
+
 # What?
 Our app is velocity tracker for github user displaying this user issues and to help compare open issues with close ones.
 
