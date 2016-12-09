@@ -1,4 +1,5 @@
 function sortByWeek(issues, state) {
+  if(!issues) return;
   return issues
   .filter( function(issue) {
     if(state && issue.state !== state) { return false; }
