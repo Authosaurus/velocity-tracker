@@ -8,7 +8,13 @@ const env = require('env2')('./config.env');
 const contextCredentials = require('hapi-context-credentials');
 
 
-const server =  new hapi.Server();
+const server =  new hapi.Server({
+  connections: {
+    state: {
+      isSameSite: 'Lax'
+    }
+  }
+});
 
 server.connection({
     port: process.env.PORT || 3000
@@ -24,9 +30,7 @@ const options = {
 server.register([inert, vision, cookieAuth, contextCredentials], (err) =>{
   if(err) console.log("Error registering:", err);
 
-
   server.auth.strategy('session', 'cookie', 'optional', options);
-
 
   server.views({
       engines: { hbs: handlebars },
@@ -40,7 +44,5 @@ server.register([inert, vision, cookieAuth, contextCredentials], (err) =>{
 
   server.route(routes);
 });
-
-
 
 module.exports = server;

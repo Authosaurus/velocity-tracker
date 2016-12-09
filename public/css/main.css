@@ -99,6 +99,27 @@ li {
 .open_close_count {
   padding-top: 0;
 }
+
+.issue_item {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.issue_date {
+  font-size: 0.9em;
+  margin-top: 2px;
+  color:  #ccc;
+}
+
+.closed {
+  color: red;
+  font-size: 1.2em;
+}
+
+.open {
+  color: green;
+  font-size: 1.2em;
+}
 /* tabs */
 
 .tabs {
