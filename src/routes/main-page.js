@@ -40,8 +40,5 @@ function fetchSaveIssues(access_token, cb) {
   request.get({url: get_url, headers: get_headers}, (error, response, body) => {
     let issues = JSON.parse(body);
     cb(null, issues);
-    //queries.insertIssues(issues, (err) => {
-    //  if(err) console.log('error saving issues');
-    //});
   });
 }
