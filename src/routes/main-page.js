@@ -6,20 +6,15 @@ module.exports = [
   {
     method: 'GET',
     path: '/',
-    handler: (req,reply) => {
-      return reply.view('index');
-    }
-  },
-  {
-    method: 'GET',
-    path: '/issues',
     handler: (req, reply) => {
+      if(!req.auth.credentials) { return reply.view('index'); }
       const webToken = jwt.verify(req.auth.credentials.token, process.env.JWT_SECRET);
       queries.getUser(webToken.username, (err, rows) => {
         if(err) { return reply(err); }
         if(!rows.length) { return reply('User not found'); }
-        fetchSaveIssues(rows[0].access_token, (err, issues) => {
-          reply.view('index', {issues: issues, username: webToken.username, link: rows[0].link});
+        const user = rows[0];
+        fetchSaveIssues(user.access_token, (err, issues) => {
+          reply.view('index', {issues: issues, username: webToken.username, link: user.link});
         });
       });
     }
