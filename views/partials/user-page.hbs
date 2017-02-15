@@ -1,18 +1,22 @@
 <div class="container">
 
-  <h2 class="welcome_user">Hello {{username}}!</h2>
-  <img class="user_image" src="{{link}}" alt="User image" />
+  <div class='dashboard'>
+    <div class='user_info'>
+      <h2 class="welcome_user">Hello {{username}}!</h2>
+      <img class="user_image" src="{{link}}" alt="User image" />
+    </div>
+    <div class='dashboard_issues'>
+      <h2 class="center total_issues_count">Total Issues:</h2>
+      <p class="center open_close_count"><span class="issue_count closed">Closed: {{{totalClosed issues}}}</span><span class="issue_count open">Open: {{{totalOpen issues}}}</span></p>
+      <ul class="tabs">
+        <li onclick="openTab(event, 'today')" class="tab-item"><a href="javascript:void(0)" class="tablink" >Today</a></li>
+        <li onclick="openTab(event, 'last_week')"class="tab-item"><a href="javascript:void(0)" class="tablink"></a> Last Week</a></li>
+        <li onclick="openTab(event, 'month')" class="tab-item"><a href="javascript:void(0)" class="tablink" >Month</a></li>
+      </ul>
+    </div>
+  </div>
 
-    <h2 class="center total_issues_count">Total Issues:</h2>
-
-    <p class="center open_close_count"><span class="issue_count closed">Closed: {{{totalClosed issues}}}</span><span class="issue_count open">Open: {{{totalOpen issues}}}</span></p>
-
-    <ul class="tabs">
-      <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'today')">Today</a></li>
-      <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'last_week')">Last Week</a></li>
-      <li class="tab-item"><a href="javascript:void(0)" class="tablink" onclick="openTab(event, 'month')">Month</a></li>
-    </ul>
-
+  <div class='issue_results'>
     <div id="today" class="tabcontent center">
       <div class="closed_left">
         <p class="closed">Closed</p>
@@ -58,4 +62,5 @@
       </div>
     </div>
   </div>
+
 </div>
