@@ -22,6 +22,9 @@ li {
   font-family: 'Dekko', cursive;
   font-size: 4rem;
   text-align: center;
+  margin-bottom: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .login_form {
@@ -60,6 +63,8 @@ li {
   border-radius: 5px;
   transition: background-color;
   cursor: pointer;
+  float: right;
+  margin-right: 1rem;
 }
 
 .logout_button:hover {
@@ -69,20 +74,33 @@ li {
 /* main */
 
 .container {
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
+}
+
+.dashboard {
+  width: 100%;
+  height: 50vh;
+}
+
+.user_info {
+  text-align: center;
+  float:left;
+  width: 50%;
+}
+
+.dashboard_issues {
+  float:left;
+  width: 50%;
 }
 
 .welcome_user {
   width: 45%;
-  display: inline-block;
-  margin-left: 30%;
+  margin: 0 auto;
 }
 
 .user_image {
-  width: 90px;
-  margin-right: 14%;
-  float: right;
+  width: 55%;
 }
 
 .issue_count {
@@ -95,10 +113,75 @@ li {
 
 .total_issues_count {
   padding-bottom: 0;
+  margin: 0;
 }
 
 .open_close_count {
   padding-top: 0;
+}
+
+
+/* tabs */
+.tabs {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 60%;
+  box-sizing: border-box;
+}
+
+.tab-item {
+  float: left;
+  width: 100%;
+  text-align: center;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 2.2rem;
+  height : 3rem;
+  box-sizing: border-box;
+  height: 4rem;
+}
+
+.tablink {
+  text-align: center;
+  color: black;
+  text-decoration: none;
+}
+
+.tab-item:hover {
+  background-color: #ddd;
+}
+
+.tab-item:focus,
+.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.closed_left {
+  display: inline-block;
+  width: 50%;
+  float: left;
+}
+
+.open_right {
+  display: inline-block;
+  width: 50%
+}
+
+/*issues*/
+
+.issue_results {
+  width: 100%;
 }
 
 .issue_item {
@@ -120,56 +203,4 @@ li {
 .open {
   color: green;
   font-size: 1.2em;
-}
-/* tabs */
-
-.tabs {
-  list-style-type: none;
-  margin: 0 auto;
-  padding: 0;
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  width: 24.2%;
-}
-
-.tab-item {
-  float: left;
-}
-
-.tab-item a {
-  display: inline-block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition: 0.3s;
-  font-size: 2.2em;
-}
-
-.tab-item a:hover {
-  background-color: #ddd;
-}
-
-.tab-item a:focus,
-.active {
-  background-color: #ccc;
-}
-
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  width: 50%;
-  margin: 0 auto;
-}
-
-.closed_left {
-  display: inline-block;
-  width: 50%;
-  float: left;
-}
-
-.open_right {
-  display: inline-block;
-  width: 50%
 }
